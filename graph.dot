@@ -1,0 +1,24 @@
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  "aws_eip.one" [label="aws_eip.one"];
+  "aws_instance.web-server-instance" [label="aws_instance.web-server-instance"];
+  "aws_internet_gateway.gw" [label="aws_internet_gateway.gw"];
+  "aws_network_interface.web-server-nic" [label="aws_network_interface.web-server-nic"];
+  "aws_route_table.prod-route-table" [label="aws_route_table.prod-route-table"];
+  "aws_route_table_association.a" [label="aws_route_table_association.a"];
+  "aws_security_group.allow_web" [label="aws_security_group.allow_web"];
+  "aws_subnet.subnet-1" [label="aws_subnet.subnet-1"];
+  "aws_vpc.prod-vpc" [label="aws_vpc.prod-vpc"];
+  "aws_eip.one" -> "aws_internet_gateway.gw";
+  "aws_eip.one" -> "aws_network_interface.web-server-nic";
+  "aws_instance.web-server-instance" -> "aws_network_interface.web-server-nic";
+  "aws_internet_gateway.gw" -> "aws_vpc.prod-vpc";
+  "aws_network_interface.web-server-nic" -> "aws_security_group.allow_web";
+  "aws_network_interface.web-server-nic" -> "aws_subnet.subnet-1";
+  "aws_route_table.prod-route-table" -> "aws_internet_gateway.gw";
+  "aws_route_table_association.a" -> "aws_route_table.prod-route-table";
+  "aws_route_table_association.a" -> "aws_subnet.subnet-1";
+  "aws_security_group.allow_web" -> "aws_vpc.prod-vpc";
+  "aws_subnet.subnet-1" -> "aws_vpc.prod-vpc";
+}
