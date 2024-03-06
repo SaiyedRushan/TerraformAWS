@@ -11,6 +11,8 @@ This Terraform project provisions an AWS infrastructure with the following compo
 - **Elastic IP**: An Elastic IP (EIP) associated with the network interface.
 - **EC2 Instance**: An EC2 instance (`web-server-instance`) launched in the subnet, running Apache web server.
 
+![Architecture](terraform_aws_architecture.png)
+
 ## Requirements
 
 - [Terraform](https://www.terraform.io/downloads.html) >= v0.12.0
